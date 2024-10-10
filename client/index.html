@@ -3,32 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module">
-    import {io} from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
-    const socket = io({
-        auth: {
-            serverOffset:0
-        }
-    })
-
-    const form = document.getElementById('form')
-    const input = document.getElementById('input')
-    const messages = document.getElementById('messages')
-
-    socket.on('chat message', (msg, serverOffset)=>{
-        const item =`<li>${msg}</li>`
-        messages.insertAdjacentHTML('beforeend', item)
-        socket.auth.serverOffset = serverOffset
-    })
-
-    form.addEventListener('submit',(e)=>{
-        e.preventDefault()
-        if(input.value){
-            socket.emit('chat message', input.value)
-            input.value=''
-        }
-    })
-    </script>
+    <script type="module" src="script-socket.js"></script>
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <title>IMPERIUM</title>
 </head>
